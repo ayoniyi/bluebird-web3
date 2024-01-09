@@ -4,7 +4,7 @@ import style from "./Signin.module.scss";
 import TextInput from "../TextInput/TextInput";
 import { AuthContext } from "../../context/AuthContext.jsx";
 import { post } from "../../utils/axiosLib";
-import { logger } from "../../utils/logger";
+//import { logger } from "../../utils/logger";
 import { useNavigate } from "react-router-dom";
 // import { CircularProgress } from '@material-ui/core'
 import Loader from "../../images/loading.gif";

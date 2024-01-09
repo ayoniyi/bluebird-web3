@@ -1,13 +1,13 @@
 import { useState, useRef } from "react";
 //import { useNavigate } from 'react-router-dom'
-import { post } from "../../utils/axiosLib";
+//import { post } from "../../utils/axiosLib";
 import style from "../Login/Signin.module.scss";
 import TextInput from "../TextInput/TextInput";
 import Logo from "../../images/icons/logo.svg";
 import Close from "../../images/icons/close.svg";
-import { logger } from "../../utils/logger";
+//import { logger } from "../../utils/logger";
 //import { CircularProgress } from '@material-ui/core'
-import Loader from "../../images/loading.gif";
+//import Loader from "../../images/loading.gif";
 
 interface Modal {
   modalStatus?: boolean;
@@ -24,13 +24,13 @@ interface User {
   confirmPassword: string;
 }
 
-interface Response {
-  error: string;
-  success: string;
-}
+// interface Response {
+//   error: string;
+//   success: string;
+// }
 
 const SignUp = (props: Modal) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  //const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<User>({
     name: "",
     username: "",
@@ -38,10 +38,10 @@ const SignUp = (props: Modal) => {
     password: "",
     confirmPassword: "",
   });
-  const [response, setResponse] = useState<Response>({
-    error: "",
-    success: "",
-  });
+  // const [response, setResponse] = useState<Response>({
+  //   error: "",
+  //   success: "",
+  // });
 
   const passwordConfirm: any = useRef();
 
@@ -55,59 +55,59 @@ const SignUp = (props: Modal) => {
 
   //const isEmpty = Object.values(userInput).every((x) => x === null || x === '')
 
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
-    setIsLoading(true);
-    if (userInput.confirmPassword !== userInput.password) {
-      //passwordConfirm.current.setCustomValidity("Passwords don't match!")
-      await setResponse({
-        error: "Passwords don't match!",
-        success: "",
-      });
-      ////logger(passwordConfirm.current.value);
-      setIsLoading(false);
-    } else {
-      await setResponse({
-        ...response,
-        error: "",
-      });
-      //passwordConfirm.current.setCustomValidity('')
-      if (navigator.onLine) {
-        try {
-          const newUser = {
-            name: userInput.name,
-            username: userInput.username,
-            email: userInput.email,
-            password: userInput.password,
-          };
+  // const handleSubmit = async (event: any) => {
+  //   event.preventDefault();
+  //   setIsLoading(true);
+  //   if (userInput.confirmPassword !== userInput.password) {
+  //     //passwordConfirm.current.setCustomValidity("Passwords don't match!")
+  //     await setResponse({
+  //       error: "Passwords don't match!",
+  //       success: "",
+  //     });
+  //     ////logger(passwordConfirm.current.value);
+  //     setIsLoading(false);
+  //   } else {
+  //     await setResponse({
+  //       ...response,
+  //       error: "",
+  //     });
+  //     //passwordConfirm.current.setCustomValidity('')
+  //     if (navigator.onLine) {
+  //       try {
+  //         const newUser = {
+  //           name: userInput.name,
+  //           username: userInput.username,
+  //           email: userInput.email,
+  //           password: userInput.password,
+  //         };
 
-          const endpoint = `${import.meta.env.VITE_APP_BASE_URL}auth/signup`;
-          const newUserReq = await post(endpoint, newUser);
-          //logger("REQ RESPONSE::: ", newUserReq);
-          setIsLoading(false);
-          await setResponse({
-            error: "",
-            success: "Account created successfully",
-          });
-          setTimeout(() => {
-            props.switchModal();
-          }, 1500);
-        } catch (err: any) {
-          setIsLoading(false);
-          //logger(" ERROR::: ", err);
-          setResponse({
-            error: err?.response.data,
-            success: "",
-          });
-        }
-      } else {
-        setResponse({
-          error: "No internet connection",
-          success: "",
-        });
-      }
-    }
-  };
+  //         //const endpoint = `${import.meta.env.VITE_APP_BASE_URL}auth/signup`;
+  //         //const newUserReq = await post(endpoint, newUser);
+  //         //logger("REQ RESPONSE::: ", newUserReq);
+  //         setIsLoading(false);
+  //         await setResponse({
+  //           error: "",
+  //           success: "Account created successfully",
+  //         });
+  //         setTimeout(() => {
+  //           props.switchModal();
+  //         }, 1500);
+  //       } catch (err: any) {
+  //         setIsLoading(false);
+  //         //logger(" ERROR::: ", err);
+  //         setResponse({
+  //           error: err?.response.data,
+  //           success: "",
+  //         });
+  //       }
+  //     } else {
+  //       setResponse({
+  //         error: "No internet connection",
+  //         success: "",
+  //       });
+  //     }
+  //   }
+  // };
 
   return (
     <>
@@ -133,7 +133,10 @@ const SignUp = (props: Modal) => {
             </div>
             <div className={style.modalBody}>
               <h2>Create your account</h2>
-              <form className={style.modalForm} onSubmit={handleSubmit}>
+              <form
+                className={style.modalForm}
+                //onSubmit={handleSubmit}
+              >
                 <TextInput
                   labelName="Name"
                   inputName="name"
@@ -193,20 +196,6 @@ const SignUp = (props: Modal) => {
                   {/* <p>Forgot password?</p> */}
                   <p onClick={props.switchModal}>Login to BlueBird</p>
                 </div>
-
-                <button type="submit" disabled={isLoading}>
-                  {isLoading ? (
-                    <img
-                      src={Loader}
-                      alt="loading..."
-                      style={{ height: "45px", width: "45px" }}
-                    />
-                  ) : (
-                    "Next"
-                  )}
-                </button>
-                <p className={style.errMsg}>{response.error}</p>
-                <p className={style.successMsg}>{response.success}</p>
               </form>
             </div>
           </div>

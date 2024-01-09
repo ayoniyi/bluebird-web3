@@ -39,28 +39,28 @@ const Auth = () => {
       modalStatus: false,
     });
   };
-  const handleSignIn = () => {
-    setModalValues({
-      ...modalValues,
-      modal: "SignIn",
-      modalState: true,
-      modalStatus: true,
-    });
-  };
+  // const handleSignIn = () => {
+  //   setModalValues({
+  //     ...modalValues,
+  //     modal: "SignIn",
+  //     modalState: true,
+  //     modalStatus: true,
+  //   });
+  // };
   // const google = () => {
   //   window.open(`${import.meta.env.VITE_APP_BASE_URL}auth/google`, "_self");
   // };
   // const twitter = () => {
   //   window.open(`${import.meta.env.VITE_APP_BASE_URL}auth/twitter`, "_self");
   // };
-  const handleSignUp = () => {
-    setModalValues({
-      ...modalValues,
-      modal: "SignUp",
-      modalState: true,
-      modalStatus: true,
-    });
-  };
+  // const handleSignUp = () => {
+  //   setModalValues({
+  //     ...modalValues,
+  //     modal: "SignUp",
+  //     modalState: true,
+  //     modalStatus: true,
+  //   });
+  // };
 
   const switchModal = () => {
     if (modalValues.modal === "SignUp") {
