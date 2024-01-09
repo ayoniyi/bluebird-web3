@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useContext, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -21,7 +22,11 @@ import Cover from "../../images/others/cover.jpeg";
 import avi from "../../images/others/avatar.jpeg";
 import Message from "../../images/icons/nav/message.svg";
 
-import { truncateAddress, truncateAddressM } from "../../utils/truncateAdr";
+import {
+  truncateAddress,
+  truncateAddressL,
+  truncateAddressM,
+} from "../../utils/truncateAdr";
 import {
   useContract,
   useContractEvents,
@@ -413,8 +418,9 @@ const Profile = () => {
 
             {/* </Link> */}
             <div className={style.userBox}>
-              {/* <h1>{paramUser.name}</h1>
-              <p>{usersTweets} Tweets</p> */}
+              <h1> {truncateAddressM(address)}</h1>
+              {/* <p>{usersTweets} Tweets</p> */}
+              <p> Tweets</p>
             </div>
           </div>
           <div className={style.profileBox}>
@@ -445,13 +451,14 @@ const Profile = () => {
               </div>
               <div className={style.pdBody}>
                 <div className={style.pdnames}>
-                  <h1>{truncateAddressM(address)}</h1>
+                  <h1>{truncateAddressL(address)}</h1>
                   <p>@{truncateAddress(address)}</p>
                 </div>
                 {/* <p className={style.pdBio}>{paramUser.bio}</p> */}
                 <div className={style.pdl}>
                   <img src={location} alt="location" />
                   {/* <p>{paramUser.location}</p> */}
+                  <p>earth</p>
                 </div>
               </div>
               <div className={style.pdBtm}>

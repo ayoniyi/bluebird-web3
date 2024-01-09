@@ -11,5 +11,13 @@ export function truncateAddressM(address: string) {
     return "";
   }
 
-  return address.slice(0, 4);
+  return address.slice(0, 6);
+}
+
+export function truncateAddressL(address: string) {
+  if (!address) {
+    return "";
+  }
+
+  return address.slice(0, 8) + "..." + address.slice(-8);
 }

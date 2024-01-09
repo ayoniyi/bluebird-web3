@@ -61,7 +61,7 @@
 }
 .avatar {
   position: absolute;
-  top: 220px;
+  top: 200px;
   left: 1em;
   width: 120px;
   height: 120px;
@@ -79,8 +79,9 @@
   }
 }
 .profileDesc {
-  margin-top: 0.7em;
-  padding: 1em;
+  //border: 1px solid #fff;
+  /// margin-top: 0.7em;
+  padding: 0 1em;
   //background: gray;
   .pdTop {
     @include flexRegular(row, flex-end);
@@ -98,6 +99,7 @@
     }
   }
   .messageCircle {
+    border: 1px solid #fff;
     cursor: pointer;
     @include flexRegular(row, center);
     padding: 0.5em;
@@ -109,7 +111,7 @@
     }
   }
   .pdBody {
-    margin-top: 2.6em;
+    margin-top: 4.5em;
     .pdnames {
       h1 {
         font-size: 1.2em;
@@ -117,6 +119,7 @@
       }
       p {
         color: #6e767d;
+        margin: 0.2em 0 0.6em 0;
       }
     }
     .pdl {
@@ -189,7 +192,7 @@
       .line {
         position: absolute;
         bottom: 0;
-        width: 40%;
+        width: 100%;
         border-radius: 4px;
         height: 3px;
         background: #1da1f2;

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useState, useEffect, useContext } from "react";
 //import ReactDOM from 'react-dom'
 import { get, put } from "../../utils/axiosLib";

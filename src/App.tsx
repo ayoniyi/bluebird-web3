@@ -1,13 +1,13 @@
 import "./App.css";
 import { useAddress } from "@thirdweb-dev/react";
-import { useContext } from "react";
+//import { useContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   // Navigate,
 } from "react-router-dom";
-import { AuthContext } from "./context/AuthContext";
+//import { AuthContext } from "./context/AuthContext";
 import "./App.css";
 import "animate.css";
 import Auth from "./pages/auth/Auth";
@@ -23,7 +23,7 @@ import Profile from "./pages/profile/Profile";
 
 function App() {
   const address = useAddress();
-  const [authState] = useContext<any>(AuthContext);
+  //const [authState] = useContext<any>(AuthContext);
   return (
     <>
       {/* <QueryClientProvider client={queryClient}> */}
