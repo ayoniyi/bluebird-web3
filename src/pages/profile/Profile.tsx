@@ -1,17 +1,17 @@
 /* eslint-disable no-console */
-import { useContext, useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { useState, useEffect } from "react";
+//import ReactDOM from "react-dom";
+//import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import AppContainer from "../../components/AppContainer/AppContainer";
 import Nav from "../../components/Nav/Nav";
 import RightBar from "../../components/RightBar/RightBar";
 import PageContent from "../../components/PageContent/PageContent";
 //import { CircularProgress } from "@material-ui/core";
-import { get, post, put } from "../../utils/axiosLib";
-import { logger } from "../../utils/logger";
+//import { get, post, put } from "../../utils/axiosLib";
+//import { logger } from "../../utils/logger";
 import { useParams } from "react-router";
-import Update from "../../components/Update/Update";
+//import Update from "../../components/Update/Update";
 import Tweet from "../../components/Tweet/Tweet";
 
 import style from "./Profile.module.scss";
@@ -20,7 +20,7 @@ import arrow from "../../images/icons/arrow.svg";
 import location from "../../images/icons/locale.svg";
 import Cover from "../../images/others/cover.jpeg";
 import avi from "../../images/others/avatar.jpeg";
-import Message from "../../images/icons/nav/message.svg";
+//import Message from "../../images/icons/nav/message.svg";
 
 import {
   truncateAddress,
@@ -30,19 +30,19 @@ import {
 import {
   useContract,
   useContractEvents,
-  useAddress,
+  //useAddress,
 } from "@thirdweb-dev/react";
 import { STATUS_CONTRACT_ADDRESS } from "../../constants/addresses";
-import Loader from "../../images/loading.gif";
+//import Loader from "../../images/loading.gif";
 import { CircularProgress } from "@material-ui/core";
 
-const portalElement: any = document.getElementById("modalOverlay");
+//const portalElement: any = document.getElementById("modalOverlay");
 
-interface Modal {
-  modal?: string;
-  modalStatus?: boolean;
-  modalState?: boolean;
-}
+// interface Modal {
+//   modal?: string;
+//   modalStatus?: boolean;
+//   modalState?: boolean;
+// }
 interface Status {
   errMsg?: string;
   isLoading?: boolean;
@@ -52,8 +52,8 @@ interface Status {
 const Profile = () => {
   const address: any = useParams().address;
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState<string>("Profile");
-  const [paramUser, setParamUser] = useState<any>({});
+  //const [currentPage, setCurrentPage] = useState<string>("Profile");
+  //const [paramUser, setParamUser] = useState<any>({});
   const [status, setStatus] = useState<Status>({
     errMsg: "",
     isLoading: true,
@@ -76,15 +76,14 @@ const Profile = () => {
 
   const { contract } = useContract(STATUS_CONTRACT_ADDRESS);
 
-  const { data: userTweets, isLoading: isUserTweetsLoading } =
-    useContractEvents(contract, "NewTweet", {
-      subscribe: true,
-      queryFilter: {
-        filters: {
-          user: address,
-        },
+  const { data: userTweets } = useContractEvents(contract, "NewTweet", {
+    subscribe: true,
+    queryFilter: {
+      filters: {
+        user: address,
       },
-    });
+    },
+  });
 
   // useEffect(() => {
   // const loadProfile = async () => {
@@ -383,7 +382,7 @@ const Profile = () => {
   // };
   return (
     <AppContainer>
-      <Nav currentPage={currentPage} paramUser={paramUser} />
+      <Nav currentPage="Profile" />
       {status.isLoading ? (
         <div className={style2.loaderBox}>
           <CircularProgress color="inherit" size="45px" />
@@ -427,11 +426,7 @@ const Profile = () => {
             <div className={style.coverImgBox}>
               <img src={Cover} alt="cover" />
             </div>
-            <img
-              className={style.avatar}
-              src={paramUser.profilePicture || avi}
-              alt="avi"
-            />
+            <img className={style.avatar} src={avi} alt="avi" />
             <div className={style.profileDesc}>
               <div className={style.pdTop}>
                 {/* {paramUser.username !== currentUser.username && (

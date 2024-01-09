@@ -1,36 +1,36 @@
 /* eslint-disable no-console */
-import { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 //import ReactDOM from 'react-dom'
-import { get, put } from "../../utils/axiosLib";
-import axios from "axios";
+//import { get, put } from "../../utils/axiosLib";
+//import axios from "axios";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
-import { AuthContext } from "../../context/AuthContext.jsx";
-import { motion } from "framer-motion";
-import { logger } from "../../utils/logger";
+// import { AuthContext } from "../../context/AuthContext.jsx";
+// import { motion } from "framer-motion";
+// import { logger } from "../../utils/logger";
 import { truncateAddress, truncateAddressM } from "../../utils/truncateAdr.js";
 import { BigNumber } from "ethers";
 //import { Cancel } from '@material-ui/icons'
 
 import style from "./Tweet.module.scss";
 import avi from "../../images/others/avatar.jpeg";
-import more from "../../images/icons/more.svg";
-import reply from "../../images/icons/reply.svg";
-import retweet from "../../images/icons/retweet.svg";
-import retweetFill from "../../images/icons/retweet-fill.svg";
-import like from "../../images/icons/like.svg";
-import likeFill from "../../images/icons/like-fill.svg";
-import V from "../../images/icons/verified.svg";
-import Del from "../../images/icons/bin.png";
+// import more from "../../images/icons/more.svg";
+// import reply from "../../images/icons/reply.svg";
+// import retweet from "../../images/icons/retweet.svg";
+// import retweetFill from "../../images/icons/retweet-fill.svg";
+// import like from "../../images/icons/like.svg";
+// import likeFill from "../../images/icons/like-fill.svg";
+// import V from "../../images/icons/verified.svg";
+// import Del from "../../images/icons/bin.png";
 
-interface LikeStat {
-  like: number;
-  isLiked: boolean;
-}
-interface RetweetStat {
-  retweet: number;
-  isRetweeted: boolean;
-}
+// interface LikeStat {
+//   like: number;
+//   isLiked: boolean;
+// }
+// interface RetweetStat {
+//   retweet: number;
+//   isRetweeted: boolean;
+// }
 type EventCardProps = {
   walletAddress: string;
   newStatus: string;
@@ -39,7 +39,7 @@ type EventCardProps = {
 
 const Tweet = (props: EventCardProps) => {
   const date = new Date(props.timeStamp.toNumber() * 1000);
-  const [user, setUser] = useState<any>({});
+  //const [user, setUser] = useState<any>({});
   //const portalElement: any = document.getElementById('msgBox')
   const [modal, setModal] = useState<boolean>(false);
   // const time: any = format(props.tweetFull.createdAt)
@@ -56,11 +56,11 @@ const Tweet = (props: EventCardProps) => {
   // const [authState, setAuthState] = useContext<any>(AuthContext);
   // const userObj: any = authState.user.user;
   // const token: string = authState.user.token;
-  const [info, setInfo] = useState<any>({
-    infoState: false,
-    infoStatus: false,
-    infoRes: "",
-  });
+  // const [info, setInfo] = useState<any>({
+  //   infoState: false,
+  //   infoStatus: false,
+  //   infoRes: "",
+  // });
 
   // useEffect(() => {
   //   ////logger("likes from tweet >>>", tweet.likes);
@@ -152,27 +152,27 @@ const Tweet = (props: EventCardProps) => {
   //   }
   // };
 
-  const infoHandler = () => {
-    setInfo({
-      infoState: true,
-      infoStatus: true,
-      infoRes: "You can't retweet or like your own tweet on BlueBird",
-    });
-    setTimeout(() => {
-      setInfo({
-        infoState: true,
-        infoStatus: false,
-        infoRes: "You can't retweet or like your own tweet on BlueBird",
-      });
-    }, 2500);
-    setTimeout(() => {
-      setInfo({
-        infoState: false,
-        infoStatus: false,
-        infoRes: " ",
-      });
-    }, 4000);
-  };
+  // const infoHandler = () => {
+  //   setInfo({
+  //     infoState: true,
+  //     infoStatus: true,
+  //     infoRes: "You can't retweet or like your own tweet on BlueBird",
+  //   });
+  //   setTimeout(() => {
+  //     setInfo({
+  //       infoState: true,
+  //       infoStatus: false,
+  //       infoRes: "You can't retweet or like your own tweet on BlueBird",
+  //     });
+  //   }, 2500);
+  //   setTimeout(() => {
+  //     setInfo({
+  //       infoState: false,
+  //       infoStatus: false,
+  //       infoRes: " ",
+  //     });
+  //   }, 4000);
+  // };
 
   // const retweetHandler = async () => {
   //   try {
@@ -214,23 +214,6 @@ const Tweet = (props: EventCardProps) => {
 
   return (
     <div className={style.container} onClick={modalStateHandler}>
-      {info.infoState && (
-        <>
-          {/* {ReactDOM.createPortal( */}
-          <div
-            className={`${style.infoBox}${
-              info.infoStatus === true
-                ? " animate__animated animate__zoomIn"
-                : " animate__animated animate__zoomOut"
-            }`}
-          >
-            <p>{info.infoRes}</p>
-          </div>
-          {/* , 
-        portalElement,
-          )}  */}
-        </>
-      )}
       <div className={style.content}>
         <Link to={`/profile/${props.walletAddress}`} className={style.left}>
           <img src={avi} alt="avatar" />
